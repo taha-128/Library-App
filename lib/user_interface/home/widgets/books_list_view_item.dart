@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:library_app/utils/my_images.dart';
 import 'package:star_rating/star_rating.dart';
-import '../../../constants/string.dart';
 import 'book_image.dart';
 
 class BooksListViewItem extends StatelessWidget {
@@ -13,7 +13,7 @@ class BooksListViewItem extends StatelessWidget {
       child: const Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          BookImage(image: loadingImage, index: 1, size: 200,percent: .8,),
+          BookImage(image: MyImages.loadingImage, index: 1, size: 200,percent: .8,),
           SizedBox(height: 20),
           Padding(
             padding: EdgeInsets.only(right: 10),

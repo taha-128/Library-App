@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:library_app/constants/colors.dart';
-
-import '../../../constants/styles.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:library_app/utils/my_colors.dart';
+import 'package:library_app/utils/my_icons.dart';
+import 'package:library_app/utils/my_styles.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key});
@@ -11,21 +12,22 @@ class CustomAppBar extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        IconButton(
-          onPressed: () {},
-          splashColor: MyColors.background,
-          icon: const Icon(Icons.search, size: 40),
+        GestureDetector(
+          child: SvgPicture.asset(
+            MyIcons.kSearchIcon,
+            width: 35,
+          ),
         ),
         RichText(
           text: TextSpan(
             children: [
               const TextSpan(
                 text: 'روايات',
-                style: Styles.textStyle26,
+                style: MyStyles.textStyle26,
               ),
               TextSpan(
                 text: ' وكتب',
-                style: Styles.textStyle26.copyWith(color: MyColors.lightPink),
+                style: MyStyles.textStyle26.copyWith(color: MyColors.lightPink),
               ),
             ],
           ),

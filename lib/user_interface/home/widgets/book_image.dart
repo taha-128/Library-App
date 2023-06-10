@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:library_app/utils/my_colors.dart';
+import 'package:library_app/utils/my_images.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
-import '../../../constants/colors.dart';
-import '../../../constants/string.dart';
+
 
 class BookImage extends StatelessWidget {
   const BookImage(
@@ -33,13 +34,13 @@ class BookImage extends StatelessWidget {
           child: true //* image != null
               ? const FadeInImage(
                   fit: BoxFit.cover,
-                  placeholder: AssetImage(loadingImage),
+                  placeholder: AssetImage(MyImages.loadingImage),
                   image: AssetImage(
                     //* NetworkImage(bookImage)
-                    loadingImage,
+                    MyImages.loadingImage,
                   ),
                 )
-              : Image.asset(errorImage),
+              : Image.asset(MyImages.errorImage),
         ),
       ),
     );

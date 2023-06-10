@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../constants/styles.dart';
+import 'package:library_app/utils/my_styles.dart';
 import 'latest_book_widget.dart';
 
 class LatestBooks extends StatelessWidget {
@@ -13,7 +12,7 @@ class LatestBooks extends StatelessWidget {
       children: [
         Text(
           'أحدث الإصدارات',
-          style: Styles.textStyle26.copyWith(fontSize: 22),
+          style: MyStyles.textStyle26.copyWith(fontSize: 22),
         ),
         const SizedBox(height: 5),
         const LatestBookWidget(),

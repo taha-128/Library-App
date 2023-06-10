@@ -3,9 +3,11 @@ import 'package:go_router/go_router.dart';
 import 'package:library_app/user_interface/book_details/book_details_screen.dart';
 import 'package:library_app/user_interface/home/home_screen.dart';
 
-import 'constants/string.dart';
-
 class AppRouter {
+  static const String kHomePath = '/';
+
+  static const String kBookDetailsPath = '/BookDetails';
+
   RouterConfig<Object> appRouter = GoRouter(
     routes: [
       GoRoute(
@@ -13,7 +15,7 @@ class AppRouter {
         builder: (context, state) => const HomeScreen(),
       ),
       GoRoute(
-        path: kHomePath,
+        path: kBookDetailsPath,
         builder: (context, state) => const BookDetailsScreen(),
       ),
     ],

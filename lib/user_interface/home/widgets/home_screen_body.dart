@@ -26,6 +26,7 @@ class HomeScreenBody extends StatelessWidget {
               BooksListView(),
               SizedBox(height: 25),
               LatestBooks(),
+              SizedBox(height: 100),
             ],
           ),
         ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:library_app/constants/styles.dart';
-
-import '../../../constants/colors.dart';
+import 'package:library_app/utils/my_colors.dart';
+import 'package:library_app/utils/my_styles.dart';
 
 class CategoriesListViewItem extends StatelessWidget {
   const CategoriesListViewItem(
@@ -23,7 +22,7 @@ class CategoriesListViewItem extends StatelessWidget {
         onPressed: () {},
         child: Text(
           text,
-          style: Styles.textStyle18,
+          style: MyStyles.textStyle18,
         ),
       ),
     );

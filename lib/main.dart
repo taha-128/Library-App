@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:library_app/app_router.dart';
-import 'package:library_app/constants/colors.dart';
-import 'package:library_app/constants/string.dart';
+import 'package:library_app/utils/my_colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +16,7 @@ class MyApp extends StatelessWidget {
       routerConfig: AppRouter().appRouter,
       theme: ThemeData(
         scaffoldBackgroundColor: MyColors.background,
-        fontFamily: myFontFamily,
+        fontFamily: 'SansArabic',
         brightness: Brightness.dark,
       ),
     );
