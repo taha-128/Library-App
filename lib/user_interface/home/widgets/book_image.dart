@@ -4,10 +4,15 @@ import '../../../constants/colors.dart';
 import '../../../constants/string.dart';
 
 class BookImage extends StatelessWidget {
-  const BookImage({super.key, required this.image, required this.index, required this.size});
+  const BookImage(
+      {super.key,
+      required this.image,
+      required this.index,
+      required this.size,
+      required this.percent});
   final String image;
   final int index;
-  final double size;
+  final double size, percent;
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +23,11 @@ class BookImage extends StatelessWidget {
         //TODO: Navigate to Book Details by index
       },
       child: SizedBox(
-        width: size * .8,
+        width: size * percent,
         height: size,
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25),
-            border: Border.all(width: 1),
             color: MyColors.black,
           ),
           child: true //* image != null
