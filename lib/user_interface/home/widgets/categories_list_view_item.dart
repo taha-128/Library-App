@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:library_app/constants/styles.dart';
 
 import '../../../constants/colors.dart';
 
@@ -22,7 +23,7 @@ class CategoriesListViewItem extends StatelessWidget {
         onPressed: () {},
         child: Text(
           text,
-          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+          style: Styles.textStyle18,
         ),
       ),
     );
