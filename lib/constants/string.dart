@@ -1,6 +1,6 @@
 const String baseUrl = 'https://www.googleapis.com/books/v1/volumes?q=api';
 
-const String myFont = 'SansArabic';
+const String myFontFamily = 'SansArabic';
 
 const String kHomePath = '/';
 
