@@ -9,7 +9,7 @@ class BooksListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 350,
+      height: 300,
       child: ListView.builder(
         itemCount: 3,
         reverse: true,
