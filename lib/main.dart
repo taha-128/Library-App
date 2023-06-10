@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_app/app_router.dart';
 import 'package:library_app/constants/colors.dart';
+import 'package:library_app/constants/string.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,8 +15,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       routerConfig: AppRouter().appRouter,
-      theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: AppColors.background,
+      theme: ThemeData(
+        scaffoldBackgroundColor: MyColors.background,
+        fontFamily: myFontFamily,
+        brightness: Brightness.dark,
       ),
     );
   }
