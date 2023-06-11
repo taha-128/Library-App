@@ -37,10 +37,10 @@ class LatestBookWidget extends StatelessWidget {
                 color: MyColors.background,
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: Text(
+              child: const Text(
                 'نظام الحاسوب',
                 textAlign: TextAlign.center,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 15,
                   color: Colors.white,
                 ),
@@ -53,12 +53,12 @@ class LatestBookWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text('الأب الغني والأب الفقير', style: MyStyles.textStyle18),
+                  const Text('الأب الغني والأب الفقير', style: MyStyles.textStyle18),
                   Text(
                     'روبرت كيوساكي',
                     style: MyStyles.textStyle18.copyWith(color: Colors.grey),
                   ),
-                  StarRating(
+                  const StarRating(
                     starSize: 18,
                     between: 2,
                     length: 5,
@@ -69,9 +69,8 @@ class LatestBookWidget extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 14),
-            BookImage(
+            const BookImage(
               image: MyImages.loadingImage,
-              index: 1,
               size: 150,
               percent: 0.57,
             ),

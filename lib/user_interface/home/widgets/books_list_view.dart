@@ -17,7 +17,7 @@ class BooksListView extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         shrinkWrap: true,
         itemBuilder: (context, index) {
-          return BooksListViewItem();
+          return const BooksListViewItem();
         },
       ),
     );

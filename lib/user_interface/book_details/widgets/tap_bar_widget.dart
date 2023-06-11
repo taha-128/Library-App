@@ -8,7 +8,7 @@ class MyTapBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 200,
+      width: 280,
       child: TabBar(
         isScrollable: false,
         unselectedLabelColor: Colors.white,
@@ -16,7 +16,7 @@ class MyTapBar extends StatelessWidget {
         labelColor: MyColors.purple,
         tabs: [
           Text(
-            'روابط',
+            'كتب أخرى',
             style: MyStyles.textStyle26.copyWith(fontWeight: FontWeight.w400),
           ),
           Text(

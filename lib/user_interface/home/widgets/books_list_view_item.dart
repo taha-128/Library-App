@@ -13,7 +13,7 @@ class BooksListViewItem extends StatelessWidget {
       child: const Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          BookImage(image: MyImages.loadingImage, index: 1, size: 200,percent: .8,),
+          BookImage(image: MyImages.loadingImage, size: 200,percent: .8,),
           SizedBox(height: 20),
           Padding(
             padding: EdgeInsets.only(right: 10),

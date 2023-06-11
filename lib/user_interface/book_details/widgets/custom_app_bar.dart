@@ -32,7 +32,7 @@ class CustomAppBar extends StatelessWidget {
             ),
           ],
         ),
-        Text(
+        const Text(
           'الأب الغني والأب الفقير',
           style: TextStyle(fontSize: 20),
         ),

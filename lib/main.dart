@@ -18,6 +18,8 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: MyColors.background,
         fontFamily: 'SansArabic',
         brightness: Brightness.dark,
+        highlightColor: Colors.transparent,
+        splashColor: Colors.transparent,
       ),
     );
   }

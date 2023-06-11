@@ -10,7 +10,7 @@ class UpperSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         SizedBox(
@@ -21,7 +21,7 @@ class UpperSection extends StatelessWidget {
             children: [
               Text('المؤلف : روبرت كيوساكي', style: MyStyles.textStyle18),
               Text('عدد الصفحات : 52', style: MyStyles.textStyle18),
-              Text('US : اللغة', style: MyStyles.textStyle18),
+              Text('2011-9-18 : تاريخ النشر', style: MyStyles.textStyle18),
               StarRating(
                 color: Colors.yellow,
                 starSize: 20,
@@ -32,12 +32,12 @@ class UpperSection extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(width: 14),
+        SizedBox(width: 14),
         BookImage(
           image: MyImages.loadingImage,
-          index: 1,
-          size: 250,
           percent: .72,
+          push: false,
+          size: 250,
         ),
       ],
     );
