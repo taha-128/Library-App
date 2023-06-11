@@ -40,13 +40,13 @@ class LatestBookWidget extends StatelessWidget {
               child: Text(
                 'نظام الحاسوب',
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 15,
                   color: Colors.white,
                 ),
               ),
             ),
-            SizedBox(width: 22),
+            const SizedBox(width: 22),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 14),
               child: Column(
@@ -68,7 +68,7 @@ class LatestBookWidget extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(width: 14),
+            const SizedBox(width: 14),
             BookImage(
               image: MyImages.loadingImage,
               index: 1,

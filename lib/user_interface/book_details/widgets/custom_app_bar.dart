@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:library_app/utils/my_icons.dart';
 import 'package:share_plus/share_plus.dart';
 
-
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key});
 
@@ -16,7 +15,7 @@ class CustomAppBar extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                Share.shareXFiles([XFile('download url')]);
+                Share.share('Test'); //Todo: Share the application
               },
               child: SvgPicture.asset(
                 MyIcons.kShareIcon,
