@@ -1,11 +1,24 @@
 import 'package:flutter/material.dart';
-import 'books_list_view.dart';
-import 'categories_list_view.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:library_app/data/model/book_model.dart';
+import 'package:library_app/logic/cubit/books_cubit.dart';
+import 'center_section.dart';
 import 'custom_app_bar.dart';
-import 'latest_books.dart';
 
-class HomeScreenBody extends StatelessWidget {
+class HomeScreenBody extends StatefulWidget {
   const HomeScreenBody({Key? key}) : super(key: key);
+  @override
+  State<HomeScreenBody> createState() => _HomeScreenBodyState();
+}
+
+class _HomeScreenBodyState extends State<HomeScreenBody> {
+  late List<Book> books;
+
+  @override
+  void initState() {
+    BlocProvider.of<BooksCubit>(context).getAllBooks();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +34,7 @@ class HomeScreenBody extends StatelessWidget {
             children: [
               CustomAppBar(),
               SizedBox(height: 30),
-              CategoriesListView(),
-              SizedBox(height: 25),
-              BooksListView(),
-              SizedBox(height: 25),
-              LatestBooks(),
+              CenterSection(),
               SizedBox(height: 100),
             ],
           ),
