@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:library_app/data/model/book_model.dart';
 import 'package:library_app/utils/my_icons.dart';
 import 'package:share_plus/share_plus.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
-
+  const CustomAppBar({super.key, required this.book});
+  final Book book;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -15,7 +16,7 @@ class CustomAppBar extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                Share.share('Test'); //Todo: Share the application
+                Share.share(book.downloadingLink!); //Todo: Share the application
               },
               child: SvgPicture.asset(
                 MyIcons.kShareIcon,
@@ -32,9 +33,9 @@ class CustomAppBar extends StatelessWidget {
             ),
           ],
         ),
-        const Text(
-          'الأب الغني والأب الفقير',
-          style: TextStyle(fontSize: 20),
+         Text(
+          book.title!,
+          style: const TextStyle(fontSize: 20),
         ),
         const Icon(
           Icons.menu,

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:star_rating/star_rating.dart';
 
-import '../../../utils/my_images.dart';
+import '../../../data/model/book_model.dart';
 import '../../../utils/my_styles.dart';
 import '../../home/widgets/book_image.dart';
 
 class UpperSection extends StatelessWidget {
-  const UpperSection({super.key});
-
+  const UpperSection({super.key, required this.book});
+  final Book book;
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         SizedBox(
@@ -19,22 +19,24 @@ class UpperSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text('المؤلف : روبرت كيوساكي', style: MyStyles.textStyle18),
-              Text('عدد الصفحات : 52', style: MyStyles.textStyle18),
-              Text('2011-9-18 : تاريخ النشر', style: MyStyles.textStyle18),
+              Text('المؤلف : ${book.author}', style: MyStyles.textStyle18),
+              Text('عدد الصفحات : ${book.bookPages}',
+                  style: MyStyles.textStyle18),
+              Text('${book.puplishingDate} : تاريخ النشر',
+                  style: MyStyles.textStyle18),
               StarRating(
                 color: Colors.yellow,
                 starSize: 20,
                 between: 4,
                 length: 5,
-                rating: 5,
+                rating: book.rating!.toDouble(),
               ),
             ],
           ),
         ),
-        SizedBox(width: 14),
+        const SizedBox(width: 14),
         BookImage(
-          image: MyImages.loadingImage,
+          book: book,
           percent: .72,
           push: false,
           size: 250,

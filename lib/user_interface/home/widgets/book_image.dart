@@ -4,27 +4,33 @@ import 'package:library_app/utils/my_colors.dart';
 import 'package:library_app/utils/my_images.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
+import '../../../data/model/book_model.dart';
+
 class BookImage extends StatelessWidget {
   const BookImage({
     super.key,
     required this.size,
     required this.percent,
-    this.push,
-    required String image,
+    required this.book,
+    this.push = true,
   });
   final double size, percent;
-  final bool? push;
+  final bool push;
+  final Book book;
+
   @override
   Widget build(BuildContext context) {
     return ZoomTapAnimation(
       begin: 1,
       end: .9,
       onTap: () {
-        push ?? true
+        push
             ? Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => BookDetailsScreen(),
+                  builder: (context) => BookDetailsScreen(
+                    book: book,
+                  ),
                 ),
               )
             : null;
@@ -37,16 +43,14 @@ class BookImage extends StatelessWidget {
             borderRadius: BorderRadius.circular(25),
             color: MyColors.black,
           ),
-          child: true //* image != null
-              ? const FadeInImage(
-                  fit: BoxFit.cover,
-                  placeholder: AssetImage(MyImages.loadingImage),
-                  image: AssetImage(
-                    //* NetworkImage(bookImage)
+          child: book.thumbnail != null
+              ? FadeInImage(
+                  fit: BoxFit.contain,
+                  placeholder: const AssetImage(
                     MyImages.loadingImage,
                   ),
+                  image: NetworkImage(book.thumbnail!, scale: 2),
                 )
-              // ignore: dead_code
               : Image.asset(MyImages.errorImage),
         ),
       ),

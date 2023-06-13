@@ -1,41 +1,36 @@
 import 'package:flutter/material.dart';
-
 import 'categories_list_view_item.dart';
 
-
 class CategoriesListView extends StatelessWidget {
-  const CategoriesListView({super.key});
+  const CategoriesListView({super.key, required this.categories});
+  final List<String> categories;
 
   @override
   Widget build(BuildContext context) {
-    bool b1 = true;
-    bool b2 = false;
-    bool b3 = false;
-    bool b4 = false;
-    return SizedBox(
-      width: double.infinity,
-      height: 50,
-      child: ListView(
-        reverse: true,
-        scrollDirection: Axis.horizontal,
-        physics: const BouncingScrollPhysics(),
-        shrinkWrap: true,
-        children: [
-          CategoriesListViewItem(
-            text: 'جميع الكتب',
-            isSelected: b1,
-          ),
-          CategoriesListViewItem(
-            text: 'رياضيات',
-            isSelected: b2,
-          ),
-          CategoriesListViewItem(
-            text: 'نظام الحاسوب',
-            isSelected: b3,
-          ),
-          CategoriesListViewItem(
-            text: 'علوم الحاسوب',
-            isSelected: b4,
+    return DefaultTabController(
+      length: categories.length - 2,
+      child: TabBar(
+        isScrollable: false,
+        automaticIndicatorColorAdjustment: false,
+        unselectedLabelColor: Colors.white,
+        indicatorColor: Colors.transparent,
+        tabs: [
+          SizedBox(
+            width: double.infinity,
+            height: 50,
+            child: ListView.builder(
+              padding: EdgeInsets.zero,
+              reverse: true,
+              scrollDirection: Axis.horizontal,
+              physics: const BouncingScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: categories.length,
+              itemBuilder: (context, index) {
+                return CategoriesListViewItem(
+                  text: categories[index],
+                );
+              },
+            ),
           ),
         ],
       ),
