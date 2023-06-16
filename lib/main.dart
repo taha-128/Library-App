@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //TODO: make notification playSound to اللهم صل على محمد
     return BlocProvider(
       create: (context) => BooksCubit(),
       child: MaterialApp(

@@ -1,7 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:library_app/data/api/books_api.dart';
 import 'package:library_app/data/repository/books_repository.dart';
-
 import '../../data/model/book_model.dart';
 part 'books_state.dart';
 
@@ -9,12 +9,19 @@ class BooksCubit extends Cubit<BooksState> {
   BooksCubit() : super(BooksInitial());
 
   late List<Book> books;
+
   late List<Book> showedBooks = books;
+
+  List<Book> favouriteBooks = [];
+
+  late List<String> booksForSearch = books.map((book) => book.title!).toList();
+
   List<String> categories = ['جميع الكتب'];
+
   String category = 'جميع الكتب';
 
   Future<List<Book>> getAllBooks() async {
-    books = await BooksRepository(booksApi: BooksApi()).getAllCharacters();
+    books = await BooksRepository(booksApi: BooksApi()).getAllBooks();
     categories = await getCategories();
     emit(BooksLoaded(books: showedBooks, categories: categories));
     return books;
@@ -38,8 +45,43 @@ class BooksCubit extends Cubit<BooksState> {
     }
     this.category = category ?? 'جميع الكتب';
     emit(
-      CategoriesChanged(category: category ?? 'جميع الكتب', books: showedBooks),
+      CategoryChanged(books: showedBooks),
     );
-    // emit(BooksLoaded(books: books, categories: categories));
   }
+
+  void addToFavourites({required Book book, required BuildContext context}) {
+    if (favouriteBooks.contains(book)) {
+      favouriteBooks.remove(book);
+      showSnackBar(
+        color: Colors.red,
+        text: 'تمت الإزالة من المفضلة',
+        context: context,
+      );
+    } else {
+      favouriteBooks.add(book);
+      showSnackBar(
+        color: Colors.green,
+        text: 'تمت الإضافة إلى المفضلة',
+        context: context,
+      );
+    }
+    emit(state);
+  }
+}
+
+void showSnackBar(
+    {required BuildContext context,
+    required String text,
+    required Color color}) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      backgroundColor: color,
+      content: Text(
+        text,
+        style: const TextStyle(fontSize: 22, color: Colors.white),
+        textAlign: TextAlign.center,
+      ),
+      duration: const Duration(seconds: 1),
+    ),
+  );
 }

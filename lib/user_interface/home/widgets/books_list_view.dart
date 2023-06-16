@@ -17,9 +17,9 @@ class BooksListView extends StatelessWidget {
           return ListView.builder(
             itemCount: books.length,
             reverse: true,
+            itemExtent: 160,
             scrollDirection: Axis.horizontal,
             physics: const BouncingScrollPhysics(),
-            shrinkWrap: true,
             itemBuilder: (context, i) {
               return BooksListViewItem(
                 book: Book(

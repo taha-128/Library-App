@@ -10,9 +10,7 @@ class BooksLoaded extends BooksState {
   final List<String> categories;
 }
 
-class CategoriesChanged extends BooksState {
-  CategoriesChanged({ required this.category, required this.books});
-  final String category;
-
+class CategoryChanged extends BooksState {
+  CategoryChanged({required this.books});
   final List<Book> books;
 }

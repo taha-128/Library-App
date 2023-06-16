@@ -22,7 +22,7 @@ class BookImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ZoomTapAnimation(
       begin: 1,
-      end: .9,
+      end: .95,
       onTap: () {
         push
             ? Navigator.push(
@@ -40,16 +40,21 @@ class BookImage extends StatelessWidget {
         height: size,
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(25),
+            borderRadius: BorderRadius.circular(18),
             color: MyColors.black,
           ),
           child: book.thumbnail != null
-              ? FadeInImage(
-                  fit: BoxFit.contain,
-                  placeholder: const AssetImage(
-                    MyImages.loadingImage,
+              ? ClipRRect(
+                  borderRadius: BorderRadius.circular(18),
+                  child: FadeInImage(
+                    width: size * percent,
+                    height: size,
+                    fit: BoxFit.fill,
+                    placeholder: const AssetImage(
+                      MyImages.loadingImage,
+                    ),
+                    image: NetworkImage(book.thumbnail!),
                   ),
-                  image: NetworkImage(book.thumbnail!, scale: 2),
                 )
               : Image.asset(MyImages.errorImage),
         ),

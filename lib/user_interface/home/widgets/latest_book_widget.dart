@@ -76,10 +76,13 @@ class LatestBookWidget extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 14),
-            BookImage(
-              book: book,
-              size: 150,
-              percent: 0.57,
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4),
+              child: BookImage(
+                book: book,
+                size: 150,
+                percent: 0.55,
+              ),
             ),
           ],
         ),

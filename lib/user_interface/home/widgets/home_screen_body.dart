@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:library_app/data/model/book_model.dart';
 import 'package:library_app/logic/cubit/books_cubit.dart';
 import 'center_section.dart';
-import 'custom_app_bar.dart';
 
 class HomeScreenBody extends StatefulWidget {
   const HomeScreenBody({Key? key}) : super(key: key);
@@ -32,8 +31,6 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              CustomAppBar(),
-              SizedBox(height: 30),
               CenterSection(),
               SizedBox(height: 100),
             ],

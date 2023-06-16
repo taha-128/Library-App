@@ -6,7 +6,7 @@ class BooksRepository {
 
   BooksRepository({required this.booksApi});
 
-  Future<List<Book>> getAllCharacters() async {
+  Future<List<Book>> getAllBooks() async {
     final books = await BooksApi().getAllBooks();
 
     return books.map((book) => Book.fromJson(book)).toList();

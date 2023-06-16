@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,7 +14,7 @@ class CenterSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<BooksCubit, BooksState>(
       builder: (context, state) {
-        if (state is CategoriesChanged || state is BooksLoaded) {
+        if (state is CategoryChanged || state is BooksLoaded) {
           return Column(
             children: [
               CategoriesListView(
@@ -26,9 +25,7 @@ class CenterSection extends StatelessWidget {
                 books: BlocProvider.of<BooksCubit>(context).showedBooks,
               ),
               const SizedBox(height: 25),
-              LatestBooks(
-                books: BlocProvider.of<BooksCubit>(context).showedBooks,
-              ),
+              const LatestBooks(),
             ],
           );
         } else {

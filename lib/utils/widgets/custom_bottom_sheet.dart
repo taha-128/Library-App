@@ -3,8 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:library_app/utils/my_colors.dart';
 
 
-class SimpleBottomNavigationBar extends StatelessWidget {
-  const SimpleBottomNavigationBar({super.key, required this.screens});
+class SimpleBottomSheet extends StatelessWidget {
+  const SimpleBottomSheet({super.key, required this.screens});
   final List<Map<String, dynamic>> screens;
   @override
   Widget build(BuildContext context) {

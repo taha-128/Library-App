@@ -15,7 +15,7 @@ class BooksListViewItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          BookImage(book: book, size: 200, percent: .8),
+          BookImage(book: book, size: 180, percent: .8),
           const SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.only(right: 10),
@@ -28,6 +28,7 @@ class BooksListViewItem extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 StarRating(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   starSize: 22,
                   between: 4,
                   length: 5,
