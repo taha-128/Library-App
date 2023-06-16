@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:library_app/data/model/book_model.dart';
+import 'package:library_app/logic/cubit/books_cubit.dart';
 import 'package:library_app/utils/my_icons.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -16,7 +18,8 @@ class CustomAppBar extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                Share.share(book.downloadingLink!); //Todo: Share the application
+                Share.share(
+                    book.downloadingLink!); //Todo: Share the application
               },
               child: SvgPicture.asset(
                 MyIcons.kShareIcon,
@@ -25,7 +28,10 @@ class CustomAppBar extends StatelessWidget {
             ),
             const SizedBox(width: 14),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                BlocProvider.of<BooksCubit>(context)
+                    .addToFavourites(book: book, context: context);
+              },
               child: SvgPicture.asset(
                 MyIcons.kBookmarkIcon,
                 width: 28,
@@ -33,7 +39,7 @@ class CustomAppBar extends StatelessWidget {
             ),
           ],
         ),
-         Text(
+        Text(
           book.title!,
           style: const TextStyle(fontSize: 20),
         ),
