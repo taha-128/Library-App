@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:library_app/data/model/book_model.dart';
 import 'package:library_app/logic/cubit/books_cubit.dart';
 import 'package:library_app/utils/my_styles.dart';
-import 'latest_book_widget.dart';
+import 'package:library_app/utils/widgets/latest_book_widget.dart';
 
 class LatestBooks extends StatelessWidget {
   const LatestBooks({super.key});
@@ -21,9 +21,9 @@ class LatestBooks extends StatelessWidget {
           style: MyStyles.textStyle26.copyWith(fontSize: 22),
         ),
         const SizedBox(height: 5),
-        LatestBookWidget(book: books[0]),
+        BookWidget(book: books[0]),
         const SizedBox(height: 15),
-        LatestBookWidget(book: books[1]),
+        BookWidget(book: books[1]),
       ],
     );
   }
