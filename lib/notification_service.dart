@@ -13,7 +13,7 @@ class NotificationService {
           importance: NotificationImportance.Max,
           channelShowBadge: true,
           onlyAlertOnce: true,
-          playSound: false,
+          playSound: true,
           criticalAlerts: true,
         ),
       ],

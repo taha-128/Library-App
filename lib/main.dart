@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:library_app/logic/cubit/books_cubit.dart';
 import 'package:library_app/notification_service.dart';
-import 'package:library_app/user_interface/home/home_screen.dart';
+import 'package:library_app/user_interface/main_screen.dart';
 import 'package:library_app/utils/my_colors.dart';
 
 void main() {
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       create: (context) => BooksCubit(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: const HomeScreen(),
+        home: const MainScreen(),
         theme: ThemeData(
           scaffoldBackgroundColor: MyColors.background,
           fontFamily: 'SansArabic',

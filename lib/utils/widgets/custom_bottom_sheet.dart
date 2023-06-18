@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:library_app/utils/my_colors.dart';
 
-
 class SimpleBottomSheet extends StatelessWidget {
   const SimpleBottomSheet({super.key, required this.screens});
   final List<Map<String, dynamic>> screens;
@@ -19,8 +18,9 @@ class SimpleBottomSheet extends StatelessWidget {
         itemCount: screens.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return SimpleBottomNavigationBarItem(
+          return SimpleBottomSheetItem(
             screen: screens[index],
+            screens: screens,
           );
         },
       ),
@@ -28,14 +28,27 @@ class SimpleBottomSheet extends StatelessWidget {
   }
 }
 
-class SimpleBottomNavigationBarItem extends StatelessWidget {
-  const SimpleBottomNavigationBarItem({super.key, required this.screen});
+class SimpleBottomSheetItem extends StatelessWidget {
+  const SimpleBottomSheetItem({
+    super.key,
+    required this.screen,
+    required this.screens,
+  });
+  final List<Map<String, dynamic>> screens;
   final Map<String, dynamic> screen;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        screen['opened'] = true;
+        for (var item in screens) {
+          if (item['title'] != screen['title']) {
+            item['opened'] = false;
+          }
+        }
+       
+      },
       child: Column(
         children: [
           SvgPicture.asset(
