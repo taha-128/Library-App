@@ -49,7 +49,8 @@ class BooksCubit extends Cubit<BooksState> {
     );
   }
 
-  void addToFavourites({required Book book, required BuildContext context}) {
+  void addToFavourites(
+      {required Book book, required BuildContext context}) async {
     if (favouriteBooks.contains(book)) {
       favouriteBooks.remove(book);
       showSnackBar(
@@ -69,10 +70,11 @@ class BooksCubit extends Cubit<BooksState> {
   }
 }
 
-void showSnackBar(
-    {required BuildContext context,
-    required String text,
-    required Color color}) {
+void showSnackBar({
+  required BuildContext context,
+  required String text,
+  required Color color,
+}) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       backgroundColor: color,

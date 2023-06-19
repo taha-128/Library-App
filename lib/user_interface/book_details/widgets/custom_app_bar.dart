@@ -19,7 +19,8 @@ class CustomAppBar extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 Share.share(
-                    book.downloadingLink!); //Todo: Share the application
+                  book.downloadingLink!,
+                ); //Todo: Share the application
               },
               child: SvgPicture.asset(
                 MyIcons.kShareIcon,

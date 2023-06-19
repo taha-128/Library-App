@@ -9,7 +9,9 @@ class UserLibraryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Book> books = BlocProvider.of<BooksCubit>(context).favouriteBooks;
+    BooksCubit cubit = BlocProvider.of<BooksCubit>(context);
+    List<Book> books = cubit.favouriteBooks;
+
     return Scaffold(
       body: SafeArea(
         child: ListView.builder(
@@ -19,7 +21,9 @@ class UserLibraryScreen extends StatelessWidget {
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.all(8),
-              child: BookWidget(book: books[index]),
+              child: BookWidget(
+                book: books[index],
+              ),
             );
           },
         ),
