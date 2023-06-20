@@ -54,6 +54,7 @@ class SimpleBottomSheetItem extends StatelessWidget {
           SvgPicture.asset(
             screen['icon'],
             height: 30,
+            // ignore: deprecated_member_use
             color: screen['opened'] ? Colors.white : Colors.grey,
           ),
           const SizedBox(height: 3),

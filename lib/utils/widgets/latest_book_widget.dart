@@ -45,7 +45,7 @@ class BookWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Text(
-                book.category!,
+                book.category,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 15,
@@ -60,16 +60,16 @@ class BookWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text(book.title!, style: MyStyles.textStyle18),
+                  Text(book.title, style: MyStyles.textStyle18),
                   Text(
-                    book.author!,
+                    book.author,
                     style: MyStyles.textStyle18.copyWith(color: Colors.grey),
                   ),
                   StarRating(
                     starSize: 18,
                     between: 2,
                     length: 5,
-                    rating: book.rating!,
+                    rating: book.rating,
                     color: Colors.yellow,
                   ),
                 ],

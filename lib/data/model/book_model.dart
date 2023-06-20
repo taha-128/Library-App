@@ -1,18 +1,18 @@
 class Book {
-  late String? title;
-  late String? category;
-  late String? description;
-  late String? author;
-  late String? thumbnail;
-  late String? puplishingDate;
-  late String? downloadingLink;
-  late double? pdfSize;
-  late double? rating;
+  late String title;
+  late String category;
+  late String description;
+  late String author;
+  late String thumbnail;
+  late String puplishingDate;
+  late String downloadingLink;
+  late double pdfSize;
+  late double rating;
   late List? moreBooks;
-  late int? bookPages;
+  late int bookPages;
   Book({
-    this.title,
-    this.category,
+    required this.title,
+    required this.category,
     required this.description,
     required this.author,
     required this.thumbnail,

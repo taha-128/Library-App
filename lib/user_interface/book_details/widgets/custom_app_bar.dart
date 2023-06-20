@@ -19,7 +19,7 @@ class CustomAppBar extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 Share.share(
-                  book.downloadingLink!,
+                  book.downloadingLink,
                 ); //Todo: Share the application
               },
               child: SvgPicture.asset(
@@ -29,9 +29,10 @@ class CustomAppBar extends StatelessWidget {
             ),
             const SizedBox(width: 14),
             GestureDetector(
-              onTap: () {
-                BlocProvider.of<BooksCubit>(context)
-                    .addToFavourites(book: book, context: context);
+              onTap: () async {
+                BlocProvider.of<BooksCubit>(context).favouriteBooks =
+                    await BlocProvider.of<BooksCubit>(context)
+                        .addToFavourites(book: book, context: context);
               },
               child: SvgPicture.asset(
                 MyIcons.kBookmarkIcon,
@@ -41,7 +42,7 @@ class CustomAppBar extends StatelessWidget {
           ],
         ),
         Text(
-          book.title!,
+          book.title,
           style: const TextStyle(fontSize: 20),
         ),
         const Icon(

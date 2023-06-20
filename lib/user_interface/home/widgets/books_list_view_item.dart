@@ -23,7 +23,7 @@ class BooksListViewItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  book.title ?? '',
+                  book.title,
                   style: const TextStyle(fontSize: 16),
                 ),
                 const SizedBox(height: 20),
@@ -32,7 +32,7 @@ class BooksListViewItem extends StatelessWidget {
                   starSize: 22,
                   between: 4,
                   length: 5,
-                  rating: book.rating ?? 0,
+                  rating: book.rating,
                   color: Colors.yellow,
                 ),
               ],

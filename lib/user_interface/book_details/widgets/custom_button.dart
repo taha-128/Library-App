@@ -16,7 +16,7 @@ class CustomButton extends StatelessWidget {
       child: MaterialButton(
         onPressed: () {
           FileDownloader.downloadFile(
-            url: book.downloadingLink!,
+            url: book.downloadingLink,
             name: '${book.title}.pdf',
             onDownloadCompleted: (path) {
               AwesomeNotifications().createNotification(

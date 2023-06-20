@@ -29,7 +29,7 @@ class UpperSection extends StatelessWidget {
                 starSize: 20,
                 between: 4,
                 length: 5,
-                rating: book.rating!.toDouble(),
+                rating: book.rating.toDouble(),
               ),
             ],
           ),

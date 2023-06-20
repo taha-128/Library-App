@@ -43,20 +43,18 @@ class BookImage extends StatelessWidget {
             borderRadius: BorderRadius.circular(18),
             color: MyColors.black,
           ),
-          child: book.thumbnail != null
-              ? ClipRRect(
-                  borderRadius: BorderRadius.circular(18),
-                  child: FadeInImage(
-                    width: size * percent,
-                    height: size,
-                    fit: BoxFit.fill,
-                    placeholder: const AssetImage(
-                      MyImages.loadingImage,
-                    ),
-                    image: NetworkImage(book.thumbnail!),
-                  ),
-                )
-              : Image.asset(MyImages.errorImage),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(18),
+            child: FadeInImage(
+              width: size * percent,
+              height: size,
+              fit: BoxFit.fill,
+              placeholder: const AssetImage(
+                MyImages.loadingImage,
+              ),
+              image: NetworkImage(book.thumbnail),
+            ),
+          ),
         ),
       ),
     );

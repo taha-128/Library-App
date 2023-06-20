@@ -9,21 +9,24 @@ class UserLibraryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    BooksCubit cubit = BlocProvider.of<BooksCubit>(context);
-    List<Book> books = cubit.favouriteBooks;
-
     return Scaffold(
       body: SafeArea(
-        child: ListView.builder(
-          itemCount: books.length,
-          padding: const EdgeInsets.only(top: 18),
-          physics: const BouncingScrollPhysics(),
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.all(8),
-              child: BookWidget(
-                book: books[index],
-              ),
+        child: BlocBuilder<BooksCubit, BooksState>(
+          builder: (context, state) {
+            BooksCubit cubit = BlocProvider.of<BooksCubit>(context);
+            List<Book> books = cubit.favouriteBooks;
+            return ListView.builder(
+              itemCount: books.length,
+              padding: const EdgeInsets.only(top: 18),
+              physics: const BouncingScrollPhysics(),
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: BookWidget(
+                    book: books[index],
+                  ),
+                );
+              },
             );
           },
         ),
