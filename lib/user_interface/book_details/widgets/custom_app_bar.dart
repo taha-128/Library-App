@@ -30,9 +30,10 @@ class CustomAppBar extends StatelessWidget {
             const SizedBox(width: 14),
             GestureDetector(
               onTap: () async {
-                BlocProvider.of<BooksCubit>(context).favouriteBooks =
-                    await BlocProvider.of<BooksCubit>(context)
-                        .addToFavourites(book: book, context: context);
+                await BlocProvider.of<BooksCubit>(context).addToFavourites(
+                  book: book,
+                  context: context,
+                );
               },
               child: SvgPicture.asset(
                 MyIcons.kBookmarkIcon,

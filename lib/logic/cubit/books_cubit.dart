@@ -4,6 +4,7 @@ import 'package:library_app/data/api/books_api.dart';
 import 'package:library_app/data/repository/books_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../data/model/book_model.dart';
+import '../../main.dart';
 part 'books_state.dart';
 
 class BooksCubit extends Cubit<BooksState> {
@@ -18,7 +19,7 @@ class BooksCubit extends Cubit<BooksState> {
   late List<Book> favouriteBooks =
       books.where((book) => favouriteBooksTitles.contains(book.title)).toList();
 
-  Future<SharedPreferences> prefs = SharedPreferences.getInstance();
+  // Future<SharedPreferences> prefs = SharedPreferences.getInstance();
 
   late List<String> booksForSearch = books.map((book) => book.title).toList();
 
@@ -27,7 +28,6 @@ class BooksCubit extends Cubit<BooksState> {
   String category = 'جميع الكتب';
 
   void getFavouriteBooks() async {
-    SharedPreferences prefs = await this.prefs;
     favouriteBooksTitles = prefs.getStringList('favourtieBooks') ?? [];
   }
 
@@ -61,31 +61,40 @@ class BooksCubit extends Cubit<BooksState> {
     );
   }
 
-  Future<List<Book>> addToFavourites(
+  void deleteBook(
+      {required String bookTitle, required BuildContext context}) {
+    favouriteBooksTitles.remove(bookTitle);
+    showSnackBar(
+      color: Colors.red,
+      text: 'تمت الازالة من مكتبتك',
+      context: context,
+    );
+
+    List<Book> favouriteBooks = books
+        .where((book) => favouriteBooksTitles.contains(book.title))
+        .toList();
+
+    emit(state);
+  }
+
+  Future<void> addToFavourites(
       {required Book book, required BuildContext context}) async {
-    List<Book> books;
     if (favouriteBooksTitles.contains(book.title)) {
-      favouriteBooksTitles.remove(book.title);
       showSnackBar(
-        color: Colors.red,
-        text: 'تمت الإزالة من المفضلة',
+        color: Colors.green,
+        text: 'الكتاب في مكتبتك بالفعل',
         context: context,
       );
     } else {
       favouriteBooksTitles.add(book.title);
       showSnackBar(
         color: Colors.green,
-        text: 'تمت الإضافة إلى المفضلة',
+        text: 'تمت الإضافة إلى مكتبتك',
         context: context,
       );
     }
-    SharedPreferences prefs = await this.prefs;
     prefs.setStringList('favourtieBooks', favouriteBooksTitles);
-    books = this
-        .books
-        .where((book) => favouriteBooksTitles.contains(book.title))
-        .toList();
-    return books;
+    emit(state);
   }
 }
 

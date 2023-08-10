@@ -4,10 +4,13 @@ import 'package:library_app/logic/cubit/books_cubit.dart';
 import 'package:library_app/notification_service.dart';
 import 'package:library_app/user_interface/main_screen.dart';
 import 'package:library_app/utils/my_colors.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+late SharedPreferences prefs;
+void main() async{
   NotificationService().initNotifi();
   WidgetsFlutterBinding.ensureInitialized();
+  prefs = await SharedPreferences.getInstance();
   runApp(const MyApp());
 }
 
@@ -19,6 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //TODO: make notification playSound to اللهم صل على محمد
+    
     return BlocProvider(
       create: (context) => BooksCubit(),
       child: MaterialApp(

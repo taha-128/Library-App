@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:library_app/data/model/book_model.dart';
+import 'package:library_app/logic/cubit/books_cubit.dart';
 import 'package:library_app/user_interface/book_details/book_details_screen.dart';
 import 'package:library_app/utils/my_styles.dart';
 import 'package:star_rating/star_rating.dart';
@@ -9,8 +11,12 @@ import '../../../utils/my_colors.dart';
 import '../../user_interface/home/widgets/book_image.dart';
 
 class BookWidget extends StatelessWidget {
-  const BookWidget({super.key, required this.book});
+  const BookWidget(
+      {super.key, required this.book, this.delete = false, this.onTap});
   final Book book;
+  final bool delete;
+  final GestureTapCallback? onTap;
+
   @override
   Widget build(BuildContext context) {
     return ZoomTapAnimation(
@@ -36,23 +42,33 @@ class BookWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             const SizedBox(width: 14),
-            Container(
-              width: 100,
-              height: 40,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: MyColors.background,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Text(
-                book.category,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 15,
-                  color: Colors.white,
-                ),
-              ),
-            ),
+            delete
+                ? GestureDetector(
+                    onTap: onTap,
+                    child: Text(
+                      'مسح من مكتبتي',
+                      style: MyStyles.textStyle18.copyWith(
+                        color: Colors.redAccent,
+                      ),
+                    ),
+                  )
+                : Container(
+                    width: 100,
+                    height: 40,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: MyColors.background,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Text(
+                      book.category,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 15,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
             const Spacer(),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 14),
