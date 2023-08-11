@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:library_app/utils/my_styles.dart';
 import 'package:searchfield/searchfield.dart';
-
-import '../../../logic/cubit/books_cubit.dart';
+import '../../../logic/home_cubit/books_cubit.dart';
 import '../../book_details/book_details_screen.dart';
 
 class MySearchField extends StatelessWidget {

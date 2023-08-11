@@ -8,4 +8,8 @@ class MyIcons {
   static const String kBookmarkIcon = 'assets/icons/bookmark.svg';
 
   static const String kShareIcon = 'assets/icons/share.svg';
+
+  static const String kTaha = 'assets/icons/share.svg';
+
+  static const String kMe = 'assets/icons/me.svg';
 }

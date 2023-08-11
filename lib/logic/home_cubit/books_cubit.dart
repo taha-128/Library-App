@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:library_app/data/api/books_api.dart';
 import 'package:library_app/data/repository/books_repository.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../../data/model/book_model.dart';
 import '../../main.dart';
 part 'books_state.dart';
@@ -14,12 +13,10 @@ class BooksCubit extends Cubit<BooksState> {
 
   late List<Book> showedBooks = books;
 
-  List<String> favouriteBooksTitles = [];
+  List<String> favouriteBooksTitles = prefs.getStringList('favorites') ?? [];
 
   late List<Book> favouriteBooks =
       books.where((book) => favouriteBooksTitles.contains(book.title)).toList();
-
-  // Future<SharedPreferences> prefs = SharedPreferences.getInstance();
 
   late List<String> booksForSearch = books.map((book) => book.title).toList();
 
@@ -27,14 +24,10 @@ class BooksCubit extends Cubit<BooksState> {
 
   String category = 'جميع الكتب';
 
-  void getFavouriteBooks() async {
-    favouriteBooksTitles = prefs.getStringList('favourtieBooks') ?? [];
-  }
-
   Future<List<Book>> getAllBooks() async {
     books = await BooksRepository(booksApi: BooksApi()).getAllBooks();
     categories = await getCategories();
-    getFavouriteBooks();
+    favouriteBooksTitles = prefs.getStringList('favorites') ?? [];
     emit(BooksLoaded(books: showedBooks, categories: categories));
     return books;
   }
@@ -61,20 +54,16 @@ class BooksCubit extends Cubit<BooksState> {
     );
   }
 
-  void deleteBook(
-      {required String bookTitle, required BuildContext context}) {
-    favouriteBooksTitles.remove(bookTitle);
+  void deleteBook(BuildContext context, {required Book book}) {
+    favouriteBooksTitles.remove(book.title);
+    favouriteBooks.remove(book);
+    prefs.setStringList('favorites', favouriteBooksTitles);
     showSnackBar(
       color: Colors.red,
       text: 'تمت الازالة من مكتبتك',
       context: context,
     );
-
-    List<Book> favouriteBooks = books
-        .where((book) => favouriteBooksTitles.contains(book.title))
-        .toList();
-
-    emit(state);
+    emit(DeleteBook(books: favouriteBooks));
   }
 
   Future<void> addToFavourites(
@@ -85,16 +74,16 @@ class BooksCubit extends Cubit<BooksState> {
         text: 'الكتاب في مكتبتك بالفعل',
         context: context,
       );
-    } else {
-      favouriteBooksTitles.add(book.title);
-      showSnackBar(
-        color: Colors.green,
-        text: 'تمت الإضافة إلى مكتبتك',
-        context: context,
-      );
+      return;
     }
-    prefs.setStringList('favourtieBooks', favouriteBooksTitles);
-    emit(state);
+    favouriteBooksTitles.add(book.title);
+    favouriteBooks.add(book);
+    prefs.setStringList('favorites', favouriteBooksTitles);
+    showSnackBar(
+      color: Colors.green,
+      text: 'تمت الإضافة إلى مكتبتك',
+      context: context,
+    );
   }
 }
 

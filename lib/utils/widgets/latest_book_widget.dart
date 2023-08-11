@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:library_app/data/model/book_model.dart';
-import 'package:library_app/logic/cubit/books_cubit.dart';
 import 'package:library_app/user_interface/book_details/book_details_screen.dart';
 import 'package:library_app/utils/my_styles.dart';
 import 'package:star_rating/star_rating.dart';

@@ -14,3 +14,8 @@ class CategoryChanged extends BooksState {
   CategoryChanged({required this.books});
   final List<Book> books;
 }
+
+class DeleteBook extends BooksState {
+  DeleteBook({required this.books});
+  final List<Book> books;
+}

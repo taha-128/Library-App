@@ -8,7 +8,7 @@ class CategoriesListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: categories.length - 2,
+      length: 1,
       child: TabBar(
         isScrollable: false,
         automaticIndicatorColorAdjustment: false,

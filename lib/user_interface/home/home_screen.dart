@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:library_app/data/model/book_model.dart';
-import 'package:library_app/logic/cubit/books_cubit.dart';
+import '../../../logic/home_cubit/books_cubit.dart';
 
-import 'widgets/center_section.dart';
+import '../../utils/my_images.dart';
+import 'widgets/books_list_view.dart';
+import 'widgets/categories_list_view.dart';
+import 'widgets/latest_books.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -27,13 +30,39 @@ class _HomeScreenState extends State<HomeScreen> {
         padding: const EdgeInsets.only(right: 16, left: 16, top: 18),
         width: double.infinity,
         height: double.infinity,
-        child: const SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              CenterSection(),
-              SizedBox(height: 30),
+              BlocBuilder<BooksCubit, BooksState>(
+                builder: (context, state) {
+                  if (state is CategoryChanged ||
+                      state is BooksLoaded ||
+                      state is DeleteBook) {
+                    return Column(
+                      children: [
+                        CategoriesListView(
+                          categories:
+                              BlocProvider.of<BooksCubit>(context).categories,
+                        ),
+                        const SizedBox(height: 25),
+                        BooksListView(
+                          books:
+                              BlocProvider.of<BooksCubit>(context).showedBooks,
+                        ),
+                        const SizedBox(height: 25),
+                        const LatestBooks(),
+                      ],
+                    );
+                  } else {
+                    return Center(
+                      child: Image.asset(MyImages.loadingImage),
+                    );
+                  }
+                },
+              ),
+              const SizedBox(height: 30),
             ],
           ),
         ),

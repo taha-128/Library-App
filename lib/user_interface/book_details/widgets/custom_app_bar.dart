@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:library_app/data/model/book_model.dart';
-import 'package:library_app/logic/cubit/books_cubit.dart';
 import 'package:library_app/utils/my_icons.dart';
 import 'package:share_plus/share_plus.dart';
+
+import '../../../logic/home_cubit/books_cubit.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key, required this.book});

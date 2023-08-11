@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:library_app/logic/cubit/books_cubit.dart';
+import '../../../logic/home_cubit/books_cubit.dart';
 import 'package:library_app/notification_service.dart';
 import 'package:library_app/user_interface/main_screen.dart';
 import 'package:library_app/utils/my_colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 late SharedPreferences prefs;
-void main() async{
+void main() async {
   NotificationService().initNotifi();
   WidgetsFlutterBinding.ensureInitialized();
   prefs = await SharedPreferences.getInstance();
@@ -21,10 +21,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //TODO: make notification playSound to اللهم صل على محمد
-    
-    return BlocProvider(
-      create: (context) => BooksCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => BooksCubit()),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: const MainScreen(),

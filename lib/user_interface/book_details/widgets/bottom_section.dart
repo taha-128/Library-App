@@ -25,7 +25,7 @@ class BottomSection extends StatelessWidget {
               child: TabBarView(
                 physics: const BouncingScrollPhysics(),
                 children: [
-                  MyTextWidget(text: 'الكاتب لا يملك كتب أخرى'),//!
+                  MyTextWidget(text: book.moreBooks!.join('\n\n')),
                   MyTextWidget(text: book.description),
                 ],
               ),
