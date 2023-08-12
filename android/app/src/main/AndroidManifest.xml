@@ -3,6 +3,7 @@
     <!-- <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARH"> -->
     <!-- <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY"> -->
     <application
+        android:requestLegacyExternalStorage="true"
         android:label="مكتبتي"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">

@@ -3,11 +3,15 @@ import 'package:library_app/utils/my_styles.dart';
 import 'package:loading_icon_button/loading_icon_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../utils/widgets/custom_loading_button.dart';
+
 class MyScreen extends StatelessWidget {
   const MyScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
     LoadingButtonController btnController1 = LoadingButtonController();
     LoadingButtonController btnController2 = LoadingButtonController();
     LoadingButtonController btnController3 = LoadingButtonController();
@@ -48,11 +52,11 @@ class MyScreen extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(height: 50),
-                const ClipOval(
+                ClipOval(
                   child: Material(
                     child: Image(
-                      width: 220,
-                      image: NetworkImage(
+                      width: width * .52,
+                      image: const NetworkImage(
                         'https://avatars.hsoubcdn.com/f9b11714a00e33ddb0eb0029c0f3fbe4?s=256',
                       ),
                     ),
@@ -60,10 +64,12 @@ class MyScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 50),
                 CustomLoadingButton(
-                  width: 320,
+                  width: width * .78,
                   onPressed: () {
                     launchCustomUrl(
-                        'https://mostaql.com/u/taha128', btnController1);
+                      'https://mostaql.com/u/taha128',
+                      btnController1,
+                    );
                   },
                   show: show1,
                   btnController: btnController1,
@@ -72,7 +78,7 @@ class MyScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 30),
                 CustomLoadingButton(
-                  width: 310,
+                  width: width * .74,
                   onPressed: () {
                     launchCustomUrl(
                         'https://github.com/taha-128', btnController2);
@@ -84,7 +90,7 @@ class MyScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 30),
                 CustomLoadingButton(
-                  width: 300,
+                  width: width * .72,
                   onPressed: () {
                     launchCustomUrl(
                       'https://www.facebook.com/profile.php?id=100055747885038',
@@ -98,7 +104,7 @@ class MyScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 30),
                 CustomLoadingButton(
-                  width: 290,
+                  width: width * .7,
                   onPressed: () {
                     launchCustomUrl(
                       'https://wa.me/+201033527637',
@@ -114,39 +120,6 @@ class MyScreen extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class CustomLoadingButton extends StatelessWidget {
-  const CustomLoadingButton({
-    super.key,
-    required this.show,
-    required this.btnController,
-    required this.onPressed,
-    required this.text,
-    required this.color,
-    required this.width,
-  });
-
-  final bool show;
-  final LoadingButtonController btnController;
-  final void Function() onPressed;
-  final String text;
-  final Color color;
-  final double width;
-  @override
-  Widget build(BuildContext context) {
-    return LoadingButton(
-      width: width,
-      showBox: show,
-      primaryColor: color,
-      onPressed: onPressed,
-      controller: btnController,
-      child: Text(
-        text,
-        style: MyStyles.textStyle26.copyWith(letterSpacing: 1.5),
       ),
     );
   }

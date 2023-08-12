@@ -21,7 +21,7 @@ class CustomAppBar extends StatelessWidget {
               onTap: () {
                 Share.share(
                   book.downloadingLink,
-                ); //Todo: Share the application
+                );
               },
               child: SvgPicture.asset(
                 MyIcons.kShareIcon,

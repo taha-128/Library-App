@@ -11,12 +11,15 @@ import '../../user_interface/home/widgets/book_image.dart';
 class BookWidget extends StatelessWidget {
   const BookWidget(
       {super.key, required this.book, this.delete = false, this.onTap});
+
   final Book book;
   final bool delete;
   final GestureTapCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.height;
     return ZoomTapAnimation(
       begin: 1,
       end: .9,
@@ -31,7 +34,7 @@ class BookWidget extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
         width: double.infinity,
-        height: 120,
+        height: height * .148,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(18),
           color: MyColors.black,
@@ -51,8 +54,8 @@ class BookWidget extends StatelessWidget {
                     ),
                   )
                 : Container(
-                    width: 100,
-                    height: 40,
+                    width: width * .14,
+                    height: height * .05,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       color: MyColors.background,
